@@ -58,3 +58,4 @@ datetimeoffset ----> -Gregorian calender
                     - 10 bytes fixed.
                     - YYYY-MM-DD HH:MM:SS .[nnnnnnn] [+|- hh:mm]
                     - Syntax: DECLARE @varname datetimeoffset(precision_scale)
+https://drive.google.com/drive/folders/1JRo8LWiywilNhhBKFIZ9sSV8Ww3JJIhB?usp=sharing
