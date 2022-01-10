@@ -1,0 +1,28 @@
+SQL Data types:
+
+1) Numeric
+
+          Tintyint ————> smallint —————> int ————> bigint
+
+
+(For current range , Square the range of the previous one and add 1)
+
+        (0-255)————>(-215 to 215 -1)————> (-231 to 231 -1)——>  (-263 to 263 -1)
+
+         1byte                      2byte                                  4byte                         8byte
+
+
+ -by default values greater than range of int are converted to decimal and not bigint.
+     eg= SELECT 2147483647/2 AS result 1 , 2147483679/2 AS result 2
+
+
+2) DECIMAL AND NUMERIC
+
+Syntax = decimal(p , s) or dec ( p , s) or numeric( p , s)
+ 
+Note : decimal and numeric are functionally the same. ( according to official documentation)
+ Where p = precision ( the total number of digits to be present)
+            s= scale ( total number of digits to the right of the decimal )
+
+
+3) date, time , date time , datetime2 , smalldatetime , datetimeoffset
