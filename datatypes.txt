@@ -7,9 +7,9 @@ SQL Data types:
 
 (For current range , Square the range of the previous one and add 1)
 
-        (0-255)————>(-215 to 215 -1)————> (-231 to 231 -1)——>  (-263 to 263 -1)
+        (0-255)————>(-2^15 to 2^15 -1)————> (-2^31 to 2^31 -1)——>  (-2^63 to 2^63 -1)
 
-         1byte                      2byte                                  4byte                         8byte
+         1byte          2byte                    4byte                      8byte
 
 
  -by default values greater than range of int are converted to decimal and not bigint.
@@ -19,10 +19,42 @@ SQL Data types:
 2) DECIMAL AND NUMERIC
 
 Syntax = decimal(p , s) or dec ( p , s) or numeric( p , s)
- 
-Note : decimal and numeric are functionally the same. ( according to official documentation)
- Where p = precision ( the total number of digits to be present)
+  
+  Where p = precision ( the total number of digits to be present)
             s= scale ( total number of digits to the right of the decimal )
+ 
+Note : decimal and numeric are functionally the same.       ( according to official documentation )
 
 
-3) date, time , date time , datetime2 , smalldatetime , datetimeoffset
+3) date.  ---->      - default YYYY-MM-DD
+                    - Gregorian Calender
+                    - Syntax - DECLARE @variable [date]
+                    - other formats - dmy , mdy, dd.mm.yyyy , dd/mm/yyyy , mdy
+                    
+   
+   time ----->   - Syntax - time(fractional_second_scale) e.g: DECLARE @myvar time(7).
+                 - Default hh:mm:ss[.nnnnnnn] max 7 fractional sec can be written.
+                 - 00:00:00.0000000 to 23:59:59.9999999
+                 
+datetime  ---->  - Syntax - DECLARE @varname datetime
+                 -  YYYY-MM-DD HH:MM:SS:.[nnn]
+                 - Gregorian calender
+                 - 8 bytes
+                 - Starts from january 1, 1753 to dec 31, 9999
+                 
+datetime2 -----> -  enhanced version of datetime , more precision 
+                 - Syntax-  datetime2(precision_scale)
+                 - Gregorian calender
+                 - maximum precision: 7
+                 
+                 
+smalldatetime ----> -Gregorian calender
+                    - 4 bytes fixed.
+                    - YYYY-MM-DD HH:MM:SS ( no nanoseconds )
+                    - Syntax: DECLARE @varname smalldatetime
+                    
+                
+datetimeoffset ----> -Gregorian calender
+                    - 10 bytes fixed.
+                    - YYYY-MM-DD HH:MM:SS .[nnnnnnn] [+|- hh:mm]
+                    - Syntax: DECLARE @varname datetimeoffset(precision_scale)
